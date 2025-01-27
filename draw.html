@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday!!!</title>
-    <link rel="stylesheet" href="draw.css">
+    <link rel="stylesheet" href="/birth/draw.css">
     <style>
         body, html {
             margin: 0;
@@ -73,7 +73,7 @@
             z-index: 10; /* 确保在最上层 */
         }
         button {
-           
+            margin: 0 5px;
             font-size: 16px;
             cursor: pointer;
             border: none;
@@ -83,20 +83,19 @@
             height: 40px;
             border-radius: 80px;
         }
-
+        button:hover {
+            opacity: 0.8;
+        }
         #playButton{
-        
+            margin: 0 5px;
             font-size: 16px;
             cursor: pointer;
             border: none;
             background-color: #83bcf1;
             color: white;
-            width:80px;
+            width: 125px;
             height: 40px;
             border-radius: 80px;
-        }
-        button:hover {
-            opacity: 0.8;
         }
     </style>
 </head>
@@ -112,14 +111,14 @@
             <input type="range" id="opacity" min="0" max="1" step="0.01" value="1">
         </div>
     </div>
-    <button id="playButton">点  我</button>
+    <button id="playButton">点我</button>
     <div class="container">
         <canvas id="drawingCanvas"></canvas>
         <video id="videoElement" width="640" height="360" autoplay>
-            <source src="chiikawa.mp4" type="video/mp4"> <!-- 替换为您的视频文件 -->
+            <source src="/birth/chiikawa.mp4" type="video/mp4"> <!-- 替换为您的视频文件 -->
             您的浏览器不支持 video 标签。
         </video>
-       
+      
         <div class="controls" id="controls">
             <label for="lineWidth">线条粗细:</label>
             <input type="range" id="lineWidth" min="1" max="20" value="1">
@@ -132,8 +131,9 @@
     </div>
 
     <script>
-       
+        const audioElement = document.getElementById('audioElement');
 
+      
         const canvas = document.getElementById('drawingCanvas');
         const ctx = canvas.getContext('2d');
         const clearBtn = document.getElementById('clearBtn');
@@ -157,7 +157,7 @@
         // 监听视频播放结束事件
         videoElement.addEventListener('ended', () => {
             videoElement.style.display = 'none'; // 隐藏视频元素
-            playButton.style.display = 'block'; // 显示播放按钮
+            playButton.style.display = 'none'; // 隐藏播放按钮
         });
 
         // 播放按钮点击事件
